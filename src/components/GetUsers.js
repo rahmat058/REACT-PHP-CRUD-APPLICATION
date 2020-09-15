@@ -14,7 +14,7 @@ class GetUsers extends Component {
   }
 
   handleUpdate = (id) => {
-    this.context.handleUpdate(id, this.name.value, this.email.value);
+    this.context.handleUpdate(id, this.name.value);
   };
 
   sortByName = (key) => {
@@ -44,6 +44,7 @@ class GetUsers extends Component {
               type="text"
               ref={(item) => (this.id = item)}
               defaultValue={id}
+              disabled
             />
           </td>
           <td>

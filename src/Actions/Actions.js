@@ -7,7 +7,7 @@ toast.configure();
 class Actions extends React.Component {
   state = {
     users: [],
-    searchVal: ''
+    searchVal: "",
   };
 
   successMessage = (message) =>
@@ -61,28 +61,17 @@ class Actions extends React.Component {
   };
 
   // UPDATE USER
-  handleUpdate = (id, user_name, user_email) => {
-    Axios.post("http://localhost/php-react/update-user.php", {
+  handleUpdate = (id, user_name) => {
+    Axios.post("/submit_form.php", {
       id: id,
       user_name: user_name,
-      user_email: user_email,
     })
       .then(({ data }) => {
-        if (data.success === 1) {
-          let users = this.state.users.map((user) => {
-            if (user.id === id) {
-              user.user_name = user_name;
-              user.user_email = user_email;
-              user.isEditing = false;
-              return user;
-            }
-            return user;
-          });
-          this.setState({
-            users,
-          });
+        if (data.status === "success") {
+          this.cancelEdit(id);
+          this.successMessage(data.messages[0]);
         } else {
-          alert(data.msg);
+          alert(data.success);
         }
       })
       .catch((error) => {
@@ -104,7 +93,7 @@ class Actions extends React.Component {
             this.successMessage(data.messages[0]);
             event.target.reset();
           } else {
-            alert(data.msg);
+            alert(data.success);
           }
         }.bind(this)
       )
