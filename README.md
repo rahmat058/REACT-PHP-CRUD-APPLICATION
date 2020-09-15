@@ -1,4 +1,8 @@
 ### ` ================= Project Start =========================`
+```
+  1. Must be install Xampp in your coumputer
+  2. Then API Folder needed under xampp>htdocs folder
+```
 
 ```
 1. First Clone the Repository or download the repository
