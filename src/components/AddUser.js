@@ -7,6 +7,7 @@ class AddUser extends Component {
   state = {
     user_name: "",
     user_gender: "",
+    searchVal: ''
   };
 
   insertUser = (event) => {
