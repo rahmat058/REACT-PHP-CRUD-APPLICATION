@@ -1,38 +1,55 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --color-primary: #8e44ad;
+  --color-primary-light: #ff3366;
+  --color-primary-dark: #ba265d;
+
+  --color-white: #fff;
+
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+
+  --line: 1px solid var(--color-grey-light-2);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html {
+  /*** 
+    Font Size Should be default 10px 
+    But px is a bad coading practice
+    so it should be convert percentage
+    Here 16px is default browser font-size 
+      & 10px is root font-size 
+    Like- (10px / 16px) =  0.625px * 100 % = 62.5% 
+    It should be 62.5%
+    1rem = 10px;
+    1em  = 16px;
+  */
+  /* font-size: 62.5%; */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cursor-pointer {
+  cursor: pointer;
 }
