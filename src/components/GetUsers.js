@@ -16,7 +16,7 @@ class GetUsers extends Component {
     let mainData;
 
     allUsers = this.context.all_users.map(
-      ({ id, name, user_name, user_email, isEditing }) => {
+      ({ id, name, isEditing }) => {
         return isEditing === true ? (
           <tr key={id}>
             <td>
@@ -35,15 +35,7 @@ class GetUsers extends Component {
                 defaultValue={name}
               />
             </td>
-            {/* <td>
-              <input
-                className='form-control'
-                type='email'
-                ref={(item) => (this.email = item)}
-                defaultValue={user_email}
-              />
-            </td> */}
-            <td>
+            <td className="d-flex">
               <button
                 className='btn btn-success mr-2'
                 onClick={() => this.handleUpdate(id)}
@@ -52,7 +44,7 @@ class GetUsers extends Component {
               </button>
               <button
                 onClick={() => this.context.cancelEdit(id)}
-                className='btn btn-light'
+                className='btn btn-danger'
               >
                 Cancel
               </button>
@@ -62,19 +54,12 @@ class GetUsers extends Component {
           <tr key={id}>
             <td>{id}</td>
             <td>{name}</td>
-            {/* <td>{user_email}</td> */}
             <td>
               <button
                 className='btn btn-dark mr-2'
                 onClick={() => this.context.editMode(id)}
               >
                 Edit
-              </button>
-              <button
-                onClick={() => this.context.handleDelete(id)}
-                className='btn btn-danger'
-              >
-                Delete
               </button>
             </td>
           </tr>
@@ -89,7 +74,6 @@ class GetUsers extends Component {
             <tr>
               <th>ID</th>
               <th>Name</th>
-              {/* <th>Email</th> */}
               <th>Actions</th>
             </tr>
           </thead>
