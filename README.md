@@ -22,6 +22,6 @@ if you don't show any data then i think it will be your cors poblem. if this pro
 I think Data will be show
 ```
 
-### ` ================= Please email or phone me if any problem to run this project =========================`
+### `Please email or phone me if any problem to run this project`
 
 ### `Thanks`
