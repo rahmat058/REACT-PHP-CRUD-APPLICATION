@@ -8,6 +8,7 @@ class Actions extends React.Component {
   state = {
     users: [],
     searchVal: "",
+    loading: false,
   };
 
   successMessage = (message) =>
@@ -83,23 +84,33 @@ class Actions extends React.Component {
   insertUser = (event, user_name, user_gender) => {
     event.preventDefault();
     event.persist();
-    Axios.post("/submit_form.php", {
-      user_name: user_name,
-      user_gender: user_gender,
-    })
-      .then(
-        function ({ data }) {
-          if (data.status === "success") {
-            this.successMessage(data.messages[0]);
-            event.target.reset();
-          } else {
-            alert(data.success);
-          }
-        }.bind(this)
-      )
-      .catch(function (error) {
-        console.log(error);
-      });
+
+    this.setState({
+      loading: true,
+    });
+
+    setTimeout(() => {
+      Axios.post("/submit_form.php", {
+        user_name: user_name,
+        user_gender: user_gender,
+      })
+        .then(
+          function ({ data }) {
+            if (data.status === "success") {
+              this.setState({
+                loading: false,
+              });
+              this.successMessage(data.messages[0]);
+              event.target.reset();
+            } else {
+              alert(data.success);
+            }
+          }.bind(this)
+        )
+        .catch(function (error) {
+          console.log(error);
+        });
+    }, 3000);
   };
 }
 

@@ -30,6 +30,7 @@ class App extends Actions {
       handleUpdate: this.handleUpdate,
       handleDelete: this.handleDelete,
       insertUser: this.insertUser,
+      loading: this.state.loading
     };
 
     return (
