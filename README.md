@@ -12,6 +12,7 @@
 ### ` ================= N.B =========================`
 
 ```
+If First Time Run this project then you may be face CORS Problem. 
 if you don't show any data then i think it will be your cors poblem. if this problem found then follow below the steps
 
 1. Add this google chrome extention
