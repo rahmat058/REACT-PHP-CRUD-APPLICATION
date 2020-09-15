@@ -1,5 +1,5 @@
 import React from "react";
-import './App.css';
+import "./App.css";
 import { Provider } from "./Context";
 import AllUsers from "./components/GetUsers";
 import AddUser from "./components/AddUser";
@@ -26,6 +26,20 @@ class App extends Actions {
                 React PHP CRUD Application
               </h1>
               <div className='card-body'>
+                <div className="row">
+                  <div className='form-group col-sm-6 offset-sm-6'>
+                    <input
+                      type='text'
+                      name='searchVal'
+                      className='form-control'
+                      placeholder='Search here...'
+                      onChange={(e) =>
+                        this.setState({ searchVal: e.target.value })
+                      }
+                    />
+                  </div>
+                </div>
+
                 <div className='row'>
                   <div className='col-md-4'>
                     <AddUser />

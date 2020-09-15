@@ -31,16 +31,6 @@ class AddUser extends Component {
               onChange={(e) => this.setState({ user_name: e.target.value })}
             />
           </div>
-          {/* <div className='form-group col-sm-6'>
-            <label className='font-weight-bold'>Email</label>
-            <input
-              type='email'
-              name='useremail'
-              ref={(val) => (this.useremail = val)}
-              className='form-control'
-              placeholder='Email'
-            />
-          </div> */}
           <div className='form-group col-sm-6 d-flex flex-column'>
             <label className='font-weight-bold'>Gender</label>
             <div className='flex-row'>
