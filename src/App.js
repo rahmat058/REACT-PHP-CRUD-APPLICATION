@@ -6,6 +6,21 @@ import AddUser from "./components/AddUser";
 import Actions from "./Actions/Actions";
 
 class App extends Actions {
+  componentDidUpdate(prevProps, prevState) {
+    const res = this.state.users.filter((user) => {
+      return (
+        user.name.toLowerCase().indexOf(this.state.searchVal.toLowerCase()) !==
+        -1
+      );
+    });
+
+    if (prevState.searchVal !== this.state.searchVal) {
+      this.setState({
+        users: res
+      })
+    }
+  }
+
   render() {
     const contextValue = {
       all_users: this.state.users,
@@ -19,20 +34,20 @@ class App extends Actions {
 
     return (
       <Provider value={contextValue}>
-        <div className='container-fluid bg-light'>
-          <div className='container p-5'>
-            <div className='card shadow-sm'>
-              <h1 className='card-header text-center text-uppercase text-muted'>
+        <div className="container-fluid bg-light">
+          <div className="container p-5">
+            <div className="card shadow-sm">
+              <h1 className="card-header text-center text-uppercase text-muted">
                 React PHP CRUD Application
               </h1>
-              <div className='card-body'>
+              <div className="card-body">
                 <div className="row">
-                  <div className='form-group col-sm-6 offset-sm-6'>
+                  <div className="form-group col-sm-6 offset-sm-6">
                     <input
-                      type='text'
-                      name='searchVal'
-                      className='form-control'
-                      placeholder='Search here...'
+                      type="text"
+                      name="searchVal"
+                      className="form-control"
+                      placeholder="Search here..."
                       onChange={(e) =>
                         this.setState({ searchVal: e.target.value })
                       }
@@ -40,11 +55,11 @@ class App extends Actions {
                   </div>
                 </div>
 
-                <div className='row'>
-                  <div className='col-md-4'>
+                <div className="row">
+                  <div className="col-md-4">
                     <AddUser />
                   </div>
-                  <div className='col-md-8'>
+                  <div className="col-md-8">
                     <AllUsers />
                   </div>
                 </div>

@@ -7,6 +7,7 @@ toast.configure();
 class Actions extends React.Component {
   state = {
     users: [],
+    searchVal: ''
   };
 
   successMessage = (message) =>
