@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 // import '../node_modules/bootstrap/dist/css/bootstrap.css'
 // import 'tippy.js/dist/tippy.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
   <React.StrictMode>

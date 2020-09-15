@@ -1,9 +1,18 @@
 import React from "react";
-import Axios from './axios_instance.js';
+import Axios from "./axios_instance.js";
+
+import { toast } from "react-toastify";
+
+toast.configure();
 class Actions extends React.Component {
   state = {
     users: [],
   };
+
+  successMessage = (message) =>
+    toast.success(message, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
 
   // FETCH USERS FROM DATABASE
   fetchUsers = () => {
@@ -104,22 +113,17 @@ class Actions extends React.Component {
   };
 
   // INSERT USER
-  insertUser = (event, user_name, user_email) => {
+  insertUser = (event, user_name, user_gender) => {
     event.preventDefault();
     event.persist();
-    Axios.post("http://localhost/php-react/add-user.php", {
+    Axios.post("/submit_form.php", {
       user_name: user_name,
-      user_email: user_email,
+      user_gender: user_gender,
     })
       .then(
         function ({ data }) {
-          if (data.success === 1) {
-            this.setState({
-              users: [
-                { id: data.id, user_name: user_name, user_email: user_email },
-                ...this.state.users,
-              ],
-            });
+          if (data.status === "success") {
+            this.successMessage(data.messages[0]);
             event.target.reset();
           } else {
             alert(data.msg);
