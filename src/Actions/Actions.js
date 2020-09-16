@@ -69,7 +69,17 @@ class Actions extends React.Component {
     })
       .then(({ data }) => {
         if (data.status === "success") {
-          this.cancelEdit(id);
+          let users = this.state.users.map((user) => {
+            if (user.id === id) {
+              user.name = user_name;
+              user.isEditing = false;
+              return user;
+            }
+            return user;
+          });
+          this.setState({
+            users,
+          });
           this.successMessage(data.messages[0]);
         } else {
           alert(data.success);
